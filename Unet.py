@@ -67,3 +67,11 @@ class Unet:
         model = Model(inputs, outputs)
 
         return model
+
+
+
+if __name__ == "__main__":
+    # Build the model 
+    unet = Unet(input_shape=(224, 224, 3), last_activation="sigmoid")
+    model = unet.model
+    model.summary()
