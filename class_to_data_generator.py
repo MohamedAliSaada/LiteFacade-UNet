@@ -41,7 +41,7 @@ class ImageDataGenerator(Sequence):
         label=label.resize(self.target_size)
 
       image = np.array(image).astype(np.float32) / 255.0
-      label = np.array(label).astype(np.int32)
+      label = np.array(label).astype(np.float32) / 255.0
 
       img.append(image)
       lab.append(label)
