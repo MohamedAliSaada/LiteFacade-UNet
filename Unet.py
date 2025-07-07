@@ -2,8 +2,9 @@ from tensorflow.keras.layers import (Input, Conv2D, Conv2DTranspose, MaxPooling2
 from tensorflow.keras.models import Model
 
 class Unet:
-    def __init__(self, input_shape=None, last_activation="relu"):
+    def __init__(self, input_shape=None, last_activation="relu" , classes=1):
         self.input_shape = input_shape
+        self.classes=classes
         self.last_activation = last_activation
         self.model = self.build_model()
     
@@ -62,7 +63,7 @@ class Unet:
         conv8 = Conv2D(64, (3, 3), activation="relu", padding='same')(concat4)
         conv8 = Conv2D(64, (3, 3), activation="relu", padding='same')(conv8)
 
-        outputs = Conv2D(1, (1, 1), activation=self.last_activation)(conv8)
+        outputs = Conv2D(self.classes, (1, 1), activation=self.last_activation)(conv8)
 
         model = Model(inputs, outputs)
 
