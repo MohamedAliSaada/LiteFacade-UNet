@@ -2,6 +2,7 @@ from tensorflow.keras.utils import Sequence
 from io import BytesIO
 import pandas as pd
 import numpy as np
+from PIL import Image
 
 class ImageDataGenerator(Sequence):
   def __init__(self , df_data , batch_size=32 , shuffle=True ,target_size=None):
