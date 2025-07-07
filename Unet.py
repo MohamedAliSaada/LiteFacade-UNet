@@ -2,7 +2,7 @@ from tensorflow.keras.layers import (Input, Conv2D, Conv2DTranspose, MaxPooling2
 from tensorflow.keras.models import Model
 
 class Unet:
-    def __init__(self, input_shape=None, last_activation="relu" , classes=1):
+    def __init__(self, input_shape=None, last_activation="relu" , classes=3):
         self.input_shape = input_shape
         self.last_activation = last_activation
         self.classes=classes
