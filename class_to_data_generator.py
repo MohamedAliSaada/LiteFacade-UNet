@@ -35,13 +35,14 @@ class ImageDataGenerator(Sequence):
     for i in batch_indexes:
       image = Image.open(BytesIO(self.dataset.iloc[i,0]['bytes']))
       label = Image.open(BytesIO(self.dataset.iloc[i,1]['bytes']))
+      
 
       if self.target_size:
         image=image.resize(self.target_size)
         label=label.resize(self.target_size)
 
       image = np.array(image).astype(np.float32) / 255.0
-      label = np.array(label).astype(np.int32)
+      label = np.array(label).astype(np.int32) - 1  # as my data from 1-12 and i need it to be from 0-11
 
       img.append(image)
       lab.append(label)
